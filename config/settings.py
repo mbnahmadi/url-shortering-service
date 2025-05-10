@@ -44,6 +44,11 @@ INSTALLED_APPS = [
     'api',
 ]
 
+
+REST_FRAMEWORK = {
+    'DATETIME_FORMAT': '%Y-%m-%dT%H:%M:%S',
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

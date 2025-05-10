@@ -15,8 +15,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from .views import CreateShortUrlView
+from .views import (
+    CreateShortUrlView, 
+    RetreiveShortUrlView, 
+    UpdateShortUrlView, 
+    DeleteShortUrlView, 
+    ShortUrlRedirectView,
+    GetshortUrlStatisticsView
+    )
 
 urlpatterns = [
-    path('create/', CreateShortUrlView.as_view(), name='create_short_url')
+    path('create/', CreateShortUrlView.as_view(), name='create_short_url'),
+    path('retreive/<str:shortcode>', RetreiveShortUrlView.as_view(), name='retreive_short_url'),
+    path('update/<str:shortcode>', UpdateShortUrlView.as_view(), name='update_short_url'),
+    path('delete/<str:shortcode>', DeleteShortUrlView.as_view(), name='delete_short_url'),
+    path('<str:shortcode>', ShortUrlRedirectView.as_view(), name='short-url-redirect'),
+    path('<str:shortcode>/status', GetshortUrlStatisticsView.as_view(), name='short-url-status'),
 ]
